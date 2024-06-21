@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candy Pop</title>
+    <link rel="stylesheet" href="candypop.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="left-buttons">
+                <button class="nav-toggle">&#9776;</button>
+                <a href="favorites.html" class="nav-icon">&#9829;</a>
+                <a href="https://forms.gle/NAYUHyZZ1WsjymPj8" class="nav-icon">&#128100;</a>
+            </div>
+            <div class="right-buttons">
+                <h1 class="title">Candy Pop</h1>
+            </div>
+        </nav>
+    </header>
+    <aside class="sidebar">
+        <button class="close-btn">&times;</button>
+        <ul>
+            <h1 class="SobreN"><i>Sobre nosotros</i></h1>
+            <li>
+                <img src="facebook-icon.png" alt="Facebook" class="limg">
+                <a href="https://www.facebook.com/candypopfllo?mibextid=ZbWKwL" class="REDES"><i>@CandyPop</i></a>
+            </li>
+            <li>
+                <img src="Instagram-icon.png" alt="Instagram" class="limg">
+                <a href="https://www.instagram.com/candypopfllo?igsh=MTJ0b3kweHJsNWhjdA==" class="REDES"><i>@CandyPop</i></a>
+            </li>
+            <div class="divSobreN-btn">
+                <a class="sobreN-btn" href="SobreN.html"><i>Más sobre nosotros</i></a>  
+            </div>
+            <div class="divSobreN-btn">
+                <a class="sobreN-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSfZIyw2zwQA38HWcNLT43P4ItJkd4PNWfosYZpi8xtpTXgGNQ/viewform?vc=0&c=0&w=1&flr=0&pli=1"><i>Dejanos tu opinion</i></a>  
+            </div>
+            <h2 Class="SobreN"><i>Creadores</i></h2>
+            <div class="nosotros">
+                <li>
+                    <p></p><img src="jass.jpg" class="nosotrosimg" alt="Jahaziel">Jahaziel</p>
+                </li> 
+                <li>
+                    <p></p><img src="MAY (1).JPG" class="nosotrosimg" alt="Mairany">Mairany</p>
+                </li> 
+                <li>
+                    <p></p><img src="fer (1).jpg" class="nosotrosimg" alt="Fernando">Fernando</p>
+                </li>
+                <li>
+                    <p></p><img src="fotojuki (1).avif" class="nosotrosimg" alt="Jukari">Jukari</p>
+                </li>
+                <li>
+                    <p></p><img src="frpg.jpg" class="nosotrosimg" alt="Danna">Danna</p>
+                </li>
+                <li>
+                    <p><img src="Widget.jpg" class="nosotrosimg"  alt="Alondra">Alondra</p>
+                </li>
+            </div>
+        </ul>
+    </aside>
+    <div class="logo-container">
+        <img src="16 sin título_Restaurado4_20240613220040.png" alt="Candy Pop Logo" class="logo">
+    </div>
+    <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Buscar productos...">
+    </div>
+    <div id="search-results" class="search-results"></div>
+    <div class="tab-bar">
+        <button class="home-btn" id="home-btn">&#8962;</button>
+        <div class="tabs">
+            <button class="tab" data-category="chocolates">Chocolates</button>
+            <button class="tab" data-category="gomitas">Gomitas</button>
+            <button class="tab" data-category="tamarindo">Tamarindo</button>
+        </div>
+     
+    </div>
+    <section class="announcement-section">
+    <a href="https://www.spotify.com/mx/premium/?utm_source=mx-es_brand_contextual_text&utm_medium=paidsearch&utm_campaign=alwayson_latam_mx_performancemarketing_core_brand+contextual+text+mx-es+google&gclsrc=aw.ds&gad_source=1&gclid=*">
+        <img src="spotify.jpg" alt="Spotify"  class="imgspot">
+    </a>
+    </section>
+    <section class="product-section">
+        <div class="cylinder"></div>
+        <div class="product-gallery" id="product-gallery">
+            <!-- Aquí van los productos -->
+        </div>
+        <div class="search-results" id="search-results">
+            <!-- Aquí van los resultados de búsqueda -->
+        </div>
+    </section>
+    <div claas="piepag">
+    <footer class="pie">
+        <p>&copy; 2024 Candy Pop. Todos los derechos reservados.</p>
+    </footer>
+</div>
+    <script>
+                      document.querySelector('.nav-toggle').addEventListener('click', function() {
+            document.querySelector('.sidebar').style.width = '250px';
+        });
+
+        document.querySelector('.close-btn').addEventListener('click', function() {
+            document.querySelector('.sidebar').style.width = '0';
+        });
+
+        const products = {
+            chocolates: [
+                {
+                    src: 'https://www.mayoreototal.mx/cdn/shop/products/29339520-2604-472f-a514-f3e1084c21dc_1200x1200.jpg?v=1601582571',
+                    name: 'Baileys Chocolates',
+                    price: '$10c/u'
+                },
+                {
+                    src: 'https://ventadenuezalmendraygranos.com/wp-content/uploads/2021/08/bon-o-bon-choco-leche-15gr.jpg',
+                    name: 'Bon o Bon',
+                    price: '$7c/u'
+                },
+                {
+                    src: 'https://despensaurbana.mx/content/images/thumbs/602ea6c5894b812405818940_huevitos-sabor-chocolate-confitados-la-corona-a-granel.jpeg',
+                    name: 'Huevitos Corona',
+                    price: '$23 100gr'
+                },
+                {
+                    src: 'https://mrsabor.mx/cdn/shop/files/AGRANELWEB4_f0c8626a-055b-4c9c-8473-c8a14a800759_1080x.png?v=1715710691',
+                    name: 'Krankys',
+                    price: '$28 100gr'
+                },
+                {
+                    src: 'https://m.media-amazon.com/images/I/71H0gwhGo0L.jpg',
+                    name: 'Kisses',
+                    price: '$35 100gr'
+                },
+                {
+                    src: 'https://ventadenuezalmendraygranos.com/wp-content/uploads/2017/02/Chocorretas-2-scaled.jpg',
+                    name: 'Chocoretas',
+                    price: '$25 100gr'
+                },
+                {
+                    src: 'https://panoli.mx/cdn/shop/products/53643997-bucarest-rumania-02-de-diciembre-de-2015-kinder-sorpresa-huevos-de-chocolate-son-un-dulce-fabricado_450x.jpg?v=1615561843',
+                    name: 'Huevo Kinder',
+                    price: '$25c/u'
+                },
+                
+                
+            ],
+            gomitas: [
+                {
+                    src: 'https://static.wixstatic.com/media/fdb62f_9cbcea64c39e461b8165948e71da310d~mv2.png/v1/fill/w_480,h_480,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/fdb62f_9cbcea64c39e461b8165948e71da310d~mv2.png',
+                    name: 'Gomitas de Frutitas',
+                    price: '$22 100gr'
+                },
+                {
+                    src: 'https://http2.mlstatic.com/D_NQ_NP_810024-MLM44642384793_012021-O.webp',
+                    name: 'Pingüinos',
+                    price: '$22 100gr'
+                },
+                {
+                    src: 'https://cdn.quicksell.co/-LzDhZIWSoPTWV0AlvZN/products/-NGZHm7YbZ-SsqMObkCb.jpg',
+                    name: 'Aros de Durazno',
+                    price: '$22 100gr'
+                },
+                {
+                    src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSez4bmew2-iOAjcHCbZ-kCOs1BeMFXKVRQPg&s',
+                    name: 'Coquitas',
+                    price: '$22 100gr'
+                },
+                {
+                    src: 'https://colday.com.mx/cdn/shop/products/Panditas_1200x1200.jpg?v=1626668259',
+                    name: 'Panditas',
+                    price: '$22 100gr'
+                },
+                {
+                    src: 'https://m.media-amazon.com/images/I/51gLBHzvPQL.jpg',
+                    name: 'Gusanos',
+                    price: '$22 100gr'
+                },
+            ],
+            tamarindo: [
+                {
+                    src: 'https://m.media-amazon.com/images/I/71cKZ5jtPeL._AC_UF1000,1000_QL80_.jpg',
+                    name: 'Picafresa',
+                    price: '$3c/u'
+                },
+                {
+                    src: 'https://i5.walmartimages.com.mx/gr/images/product-images/img_large/00750047800859L3.jpg?odnHeight=612&odnWidth=612&odnBg=FFFFFF',
+                    name: 'Rocaleta',
+                    price: '$10c/u'
+                },
+                {
+                    src: 'https://surtitienda.vteximg.com.br/arquivos/ids/180801-500-500/07502246442253.1.jpg?v=637062471594370000',
+                    name: 'Vasito Karla',
+                    price: '$7c/u'
+                },
+                {
+                    src: 'https://candymania.mx/wp-content/uploads/2019/09/Rellerindo_Vero.jpg',
+                    name: 'Rellerindo',
+                    price: '$4c/u'
+                },
+                {
+                    src: 'https://dulceriatobi.shop/cdn/shop/products/7501624799781_BanderillaBetamexTamarindo2Kg50Pzas2_jpg.png?v=1673895282&width=1445',
+                    name: 'Banderilla de Tamarindo',
+                    price: '$7c/u'
+                },
+            ]
+        };
+
+
+        const defaultProducts = [
+            {
+                src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQtukpIMElKcCeSjK3yx_tXc-cldCH000jrg&s',
+                name: 'Tornillo Costanzo',
+                price: '$30 c/u'
+            },
+            {
+                src: 'https://chocolatescacep.com/wp-content/uploads/2020/08/granel-pasas-chocolate-claro-1.jpg',
+                name: 'Pasas con Chocolate',
+                price: '$39 100Gr'
+            },
+            {
+                src: 'https://http2.mlstatic.com/D_Q_NP_994914-MLU70045099010_062023-O.webp',
+                name: 'Princesas Costanzo',
+                price: '$14 c/u'
+            },
+            {
+                src: 'https://yummysnacksmx.com/cdn/shop/products/6_9c20abe0-bb67-453a-8fa3-c2f97c4c7067_1200x1200.png?v=1622666748',
+                name: 'Gomitas de Tiburon',
+                price: '$22 100Gr'
+            },
+            {
+                src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3zeUiFpUEXFgi3oYyTbDqera6n09B3wuFXw&s',
+                name: 'Conejitos Turin',
+                price: '$15 c/u'
+            },
+            {
+                src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-9UoaK52tPAv8pU1FuAp8kK9LmpTfAFnuLg&s',
+                name: 'Enanos Costanzo',
+                price: '$12 c/u'
+            }
+        ];
+
+        function loadProducts(category) {
+            const gallery = document.getElementById('product-gallery');
+            gallery.innerHTML = '';
+            products[category].forEach(product => {
+                const productDiv = document.createElement('div');
+                productDiv.classList.add('product');
+                productDiv.innerHTML = `
+                    <div class="product-image-container">
+                        <img src="${product.src}" class="product-image" />
+                    </div>
+                    <div class="product-info">
+                        <p>${product.name}</p>
+                        <p>${product.price}</p>
+                        <button class="favorite-btn" data-product='${JSON.stringify(product)}'>&#9829;</button>
+                    </div>
+                `;
+                gallery.appendChild(productDiv);
+            });
+
+            document.querySelectorAll('.favorite-btn').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    this.style.color = 'pink';
+                    const product = JSON.parse(this.getAttribute('data-product'));
+                    addToFavorites(product);
+                });
+            });
+        }
+
+        function loadDefaultProducts() {
+            const gallery = document.getElementById('product-gallery');
+            gallery.innerHTML = '';
+            defaultProducts.forEach(product => {
+                const productDiv = document.createElement('div');
+                productDiv.classList.add('product');
+                productDiv.innerHTML = `
+                    <div class="product-image-container">
+                        <img src="${product.src}" class="product-image" />
+                    </div>
+                    <div class="product-info">
+                        <p>${product.name}</p>
+                        <p>${product.price}</p>
+                        <button class="favorite-btn" data-product='${JSON.stringify(product)}'>&#9829;</button>
+                    </div>
+                `;
+                gallery.appendChild(productDiv);
+            });
+
+            document.querySelectorAll('.favorite-btn').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    this.style.color = 'pink';
+                    const product = JSON.parse(this.getAttribute('data-product'));
+                    addToFavorites(product);
+                });
+            });
+        }
+
+        function addToFavorites(product) {
+            let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+            favorites.push(product);
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+            window.location.href = 'favorites.html';
+        }
+
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                const category = this.getAttribute('data-category');
+                loadProducts(category);
+            });
+        });
+
+        document.getElementById('home-btn').addEventListener('click', function() {
+            loadDefaultProducts();
+        });
+
+        // Cargar la categoría por defecto al inicio
+        loadDefaultProducts();
+        // Funcionalidad de búsqueda
+        function searchProducts(query) {
+            const results = [];
+            Object.values(products).forEach(category => {
+                category.forEach(product => {
+                    if (product.name.toLowerCase().includes(query.toLowerCase())) {
+                        results.push(product);
+                    }
+                });
+            });
+            return results;
+        }
+
+        function displaySearchResults(results) {
+            const searchResultsContainer = document.getElementById('search-results');
+            searchResultsContainer.innerHTML = '';
+
+            results.forEach(product => {
+                const productDiv = document.createElement('div');
+                productDiv.classList.add('search-result');
+                productDiv.innerHTML = `
+                    <div class="product-image-container">
+                        <img src="${product.src}" class="product-image" />
+                    </div>
+                    <div class="product-info">
+                        <p>${product.name}</p>
+                        <p>${product.price}</p>
+                        <button class="favorite-btn" data-product='${JSON.stringify(product)}'>&#9829;</button>
+                    </div>
+                `;
+                searchResultsContainer.appendChild(productDiv);
+            });
+
+            // Agregar evento para añadir a favoritos desde resultados de búsqueda
+            document.querySelectorAll('#search-results .favorite-btn').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    this.style.color = 'pink';
+                    const product = JSON.parse(this.getAttribute('data-product'));
+                    addToFavorites(product);
+                });
+            });
+        }
+
+        // Evento para buscar al presionar Enter en el campo de búsqueda
+        document.getElementById('search-input').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                const query = this.value.trim();
+                const results = searchProducts(query);
+                displaySearchResults(results);
+            }
+        });
+        document.getElementById('search-input').addEventListener('input', function() {
+    const query = this.value.toLowerCase();
+    const resultsContainer = document.getElementById('search-results');
+    resultsContainer.innerHTML = '';
+    if (query) {
+        const results = getFilteredProducts(query);
+        results.forEach(product => {
+            const resultDiv = document.createElement('div');
+            resultDiv.textContent = product.name;
+            resultDiv.addEventListener('click', function() {
+                loadProductsByName(product.name);
+                resultsContainer.innerHTML = '';
+            });
+            resultsContainer.appendChild(resultDiv);
+        });
+    }
+});
+
+
+function getFilteredProducts(query) {
+    const allProducts = [...defaultProducts, ...products.chocolates, ...products.gomitas, ...products.tamarindo];
+    return allProducts.filter(product => product.name.toLowerCase().includes(query));
+}
+
+function loadProductsByName(name) {
+    const gallery = document.getElementById('product-gallery');
+    gallery.innerHTML = '';
+    const allProducts = [...defaultProducts, ...products.chocolates, ...products.gomitas, ...products.tamarindo];
+    const filteredProducts = allProducts.filter(product => product.name.toLowerCase().includes(name.toLowerCase()));
+    filteredProducts.forEach(product => {
+        const productDiv = document.createElement('div');
+        productDiv.classList.add('product');
+        productDiv.innerHTML = `
+            <div class="product-image-container">
+                <img src="${product.src}" class="product-image" />
+            </div>
+            <div class="product-info">
+                <p>${product.name}</p>
+                <p>${product.price}</p>
+                <button class="favorite-btn" data-product='${JSON.stringify(product)}'>&#9829;</button>
+            </div>
+        `;
+        gallery.appendChild(productDiv);
+    });
+
+    document.querySelectorAll('.favorite-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            this.style.color = 'pink';
+            const product = JSON.parse(this.getAttribute('data-product'));
+            addToFavorites(product);
+        });
+    });
+}
+
+
+       </script>
+    </body>
+</html>

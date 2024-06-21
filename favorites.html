@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favoritos - Candy Pop</title>
+    <link rel="stylesheet" href="favorites.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="left-buttons">
+                <a href="candypopv2.html" class="nav-icon">&#8962;</a> <!-- Botón de regreso a la página principal -->
+                <a href="https://forms.gle/NAYUHyZZ1WsjymPj8" class="nav-icon">&#128100;</a>
+            </div>
+            <h1 class="title">Favoritos - Candy Pop</h1>
+        </nav>
+    </header>
+    <section class="favorites-section">
+        <h2>Tus Productos Favoritos</h2>
+        <div class="favorites-gallery" id="favorites-gallery">
+            <!-- Aquí se mostrarán los productos favoritos -->
+        </div>
+    </section>
+    <script>
+        function loadFavorites() {
+            const gallery = document.getElementById('favorites-gallery');
+            const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+            gallery.innerHTML = '';
+
+            if (favorites.length === 0) {
+                gallery.innerHTML = '<p>No tienes productos favoritos aún.</p>';
+                return;
+            }
+
+            favorites.forEach(product => {
+                const productDiv = document.createElement('div');
+                productDiv.classList.add('product');
+                productDiv.innerHTML = `
+                    <div class="product-image-container">
+                        <img src="${product.src}" class="product-image" />
+                    </div>
+                    <div class="product-info">
+                        <p>${product.name}</p>
+                        <p>${product.price}</p>
+                        <button class="favorite-btn" data-product='${JSON.stringify(product)}'>&#9829;</button>
+                        <button class="remove-favorite-btn" data-product='${JSON.stringify(product)}'>&#10060;</button>
+                    </div>
+                `;
+                gallery.appendChild(productDiv);
+            });
+
+            document.querySelectorAll('.remove-favorite-btn').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    const product = JSON.parse(this.getAttribute('data-product'));
+                    removeFromFavorites(product);
+                });
+            });
+
+            document.querySelectorAll('.favorite-btn').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    window.location.href = 'favorites.html';
+                });
+            });
+        }
+
+        function removeFromFavorites(product) {
+            let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+            favorites = favorites.filter(fav => fav.src !== product.src);
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+            loadFavorites();
+        }
+
+        // Cargar los productos favoritos al cargar la página
+        document.addEventListener('DOMContentLoaded', loadFavorites);
+    </script>
+</body>
+</html>

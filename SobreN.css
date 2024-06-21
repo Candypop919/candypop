@@ -1,0 +1,84 @@
+body {
+    background-color: #ece2c6;
+     font-family: Arial, sans-serif;
+     margin: 0;
+     padding: 0;
+     align-items: left;
+ }
+ 
+ .navbar {
+     background: linear-gradient(to right, #660331, #590f68f6, #883bbbc5,   #70067e, #830404);
+     color: #fdf5d9;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     padding: 10px 20px;
+ }
+ 
+ .left-buttons,
+ .right-buttons {
+     display: flex;
+     align-items: center;
+     
+ }
+ 
+ .left-buttons .nav-icon,
+ .right-buttons .nav-toggle {
+     background: none;
+     border: none;
+     color: #ece2c6;
+     font-size: 24px;
+     cursor: pointer;
+     margin-right: 10px;
+ }
+ 
+ .right-buttons .title {
+     font-style: italic;
+     color: rgb(253, 253, 223);
+     text-shadow: 2px 2px 3px red;
+     margin-left: 10px;
+     font-family: comic sans;
+     font-size: 28px;
+     font-weight:700;
+ }
+ 
+ .titulo-centro{
+padding-left:100px ;
+ }
+
+ .sobre-ntros {
+ 
+padding: 10px;
+Margin:0px;
+
+ }
+
+ .mision{
+    padding: 10px;
+    Margin:0px;
+    color: rgb(48, 47, 47);
+    text-align: center;
+ }
+ .train {
+   cursor: pointer;
+   width: 150px;
+   height: 150px;
+   text-align: center;
+   transition: left 5s cubic-bezier(0, 0, 1, 1);
+  
+ 
+   animation: moverLinea 3s forwards;
+ }
+ 
+ @keyframes moverLinea {
+     0% {
+         transform: translateX(20);
+       }
+       100% {
+         transform: translateX(590px);
+         
+   }
+ }
+ 
+ 
+ 
